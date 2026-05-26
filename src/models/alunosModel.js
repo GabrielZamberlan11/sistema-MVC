@@ -1,3 +1,5 @@
+const pool = require('../config/db');
+
 const Alunos = {
     listarTodos: async () => {
 
