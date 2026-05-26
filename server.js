@@ -7,6 +7,7 @@ const pessoaRoutes= require('./src/routes/pessoasRoutes')
 const produtosRoutes= require('./src/routes/produtosRoutes')
 
 
+const materiasRoutes= require('./src/routes/materiasRoutes')
 const server= express();
 server.use(cors());
 server.use(express.json());
