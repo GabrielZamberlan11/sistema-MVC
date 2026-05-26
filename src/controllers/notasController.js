@@ -3,7 +3,7 @@ const Notas = require('../models/notasModel');
 const notasController = {
     index: async (req, res) => {
         try {
-            const notas = await Nota.listarTodos();
+            const notas = await Notas.listarTodos();
             res.json(notas);
         } catch (error) {
             res.status(500).json({ error: error.message });
@@ -12,7 +12,7 @@ const notasController = {
     delete: async (req, res) => {
         const { id } = req.params;
         try {
-            const affectedRows = await Nota.deletar(id);
+            const affectedRows = await Notas.deletar(id);
             if (affectedRows === 0) {
                 return res.status(404).json({ message: 'Registro nao encontrado' })
             }
@@ -23,7 +23,7 @@ const notasController = {
     },
     store: async (req, res) => {
         try {
-            const insertId = await Nota.criar(req.body);
+            const insertId = await Notas.criar(req.body);
             res.status(201).json({ id: insertId, ...req.body });
         } catch (error) {
             res.status(500).json({ error: error.message });
@@ -32,7 +32,7 @@ const notasController = {
     update: async (req, res) => {
         const { id } = req.params;
         try {
-            const affectedRows = await Nota.atualizar(id, req.body);
+            const affectedRows = await Notas.atualizar(id, req.body);
             if (affectedRows === 0) {
                 return res.status(404).json({ message: 'Registro não encontrado' });
             }
@@ -44,4 +44,4 @@ const notasController = {
 
 
 };
-module.exports = NotasController;
+module.exports = notasController;
